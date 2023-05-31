@@ -2,16 +2,30 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo-2.png";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import proimg from "../../../assets/proimg.png"
 
 const Header = () => {
-
   const { user, logOutUser } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showTipptip, setShowTooltip] = useState(false);
   console.log(user?.email);
 
-  const handleLogOut = () => {
-    logOutUser().then().catch(error => console.log(error.message))
+  const handleMouseEnter = () => {
+    setShowTooltip(true);
   }
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  }
+
+  const handleLogOut = () => {
+    logOutUser()
+      .then()
+      .catch((error) => console.log(error.message));
+  };
+
+  // tool tip
+
   // const [cart, setCart] = useContext()
   return (
     // header starts
@@ -40,17 +54,9 @@ const Header = () => {
               <li>Blog</li>
             </NavLink>
 
-            <NavLink
-              to="register"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              <li>Register</li>
-            </NavLink>
-
+            {/* conditional display name and image */}
             {user ? (
               <>
-               
-                <span className="default"> {user.displayName}</span>
                 <li>
                   <button
                     href="#_"
@@ -66,13 +72,40 @@ const Header = () => {
                     </span>
                   </button>
                 </li>
+
+                <div className="relative">
+                  <img
+                    src={user.photoURL || proimg }
+                    alt="chef-image"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    className="w-12 border-2 border-accent rounded-full"
+                  />
+
+                  {showTipptip && (
+                    <div className="absolute bg-accent text-white text-base font-bold px-4">
+                      User Name: {user.displayName}
+                    </div>
+                  )}
+                </div>
               </>
             ) : (
               <NavLink
                 to="/login"
                 className={({ isActive }) => (isActive ? "active" : "default")}
               >
-                <li>Login</li>
+                <li>
+                  <button
+                    href="#_"
+                    className="relative inline-block text-lg group"
+                  >
+                    <span className="relative z-10 block px-5 py-2 overflow-hidden font-medium leading-tight text-white transition-colors duration-300 ease-out border-2 border-accent  group-hover:text-white">
+                      <span className="absolute inset-0 w-full h-full px-5 py-3  bg-primary"></span>
+                      <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-accent group-hover:-rotate-180 ease "></span>
+                      <span className="relative text-xl font-bold ">Login</span>
+                    </span>
+                  </button>
+                </li>
               </NavLink>
             )}
           </ul>
@@ -135,42 +168,81 @@ const Header = () => {
                         </button>
                         <nav>
                           <ul className="space-y-4">
-                            <NavLink>
-                              <li
+                            <NavLink
+                              to="/"
+                              className={({ isActive }) =>
+                                isActive ? "active" : "default"
+                              }
+                            >
+                              <li>Home</li>
+                            </NavLink>
+                            <NavLink
+                              to="/blog"
+                              className={({ isActive }) =>
+                                isActive ? "active" : "default"
+                              }
+                            >
+                              <li>Blog</li>
+                            </NavLink>
+
+                            {/* conditional display name and image */}
+                            {user ? (
+                              <>
+                                <li>
+                                  <button
+                                    href="#_"
+                                    className="relative inline-block text-lg group"
+                                    onClick={handleLogOut}
+                                  >
+                                    <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-white transition-colors duration-300 ease-out border-2 border-accent  group-hover:text-white">
+                                      <span className="absolute inset-0 w-full h-full px-5 py-3  bg-primary"></span>
+                                      <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-accent group-hover:-rotate-180 ease "></span>
+                                      <span className="relative text-xl font-bold ">
+                                        Log Out
+                                      </span>
+                                    </span>
+                                  </button>
+                                </li>
+
+                                <div className="relative">
+                                  <img
+                                    src={proimg}
+                                    alt="chef-image"
+                                    onMouseEnter={handleMouseEnter}
+                                    onMouseLeave={handleMouseLeave}
+                                    className="w-1/2 border-2 border-accent rounded-full"
+                                  />
+
+                                  {showTipptip && (
+                                    <div className="absolute bg-accent text-white text-base font-bold px-4">
+                                      User Name: {user.displayName}
+                                    </div>
+                                  )}
+                                </div>
+                              </>
+                            ) : (
+                              <NavLink
+                                to="/login"
                                 className={({ isActive }) =>
                                   isActive ? "active" : "default"
                                 }
                               >
-                                Home
-                              </li>
-                            </NavLink>
-                            <NavLink>
-                              <li
-                                className={({ isActive }) =>
-                                  isActive ? "active" : "default"
-                                }
-                              >
-                                Blog
-                              </li>
-                            </NavLink>
-                            <NavLink>
-                              <li
-                                className={({ isActive }) =>
-                                  isActive ? "active" : "default"
-                                }
-                              >
-                                Log In
-                              </li>
-                            </NavLink>
-                            <NavLink>
-                              <li
-                                className={({ isActive }) =>
-                                  isActive ? "active" : "default"
-                                }
-                              >
-                                Register
-                              </li>
-                            </NavLink>
+                                <li>
+                                  <button
+                                    href="#_"
+                                    className="relative inline-block text-lg group"
+                                  >
+                                    <span className="relative z-10 block px-5 py-2 overflow-hidden font-medium leading-tight text-white transition-colors duration-300 ease-out border-2 border-accent  group-hover:text-white">
+                                      <span className="absolute inset-0 w-full h-full px-5 py-3  bg-primary"></span>
+                                      <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-accent group-hover:-rotate-180 ease "></span>
+                                      <span className="relative text-xl font-bold ">
+                                        Login
+                                      </span>
+                                    </span>
+                                  </button>
+                                </li>
+                              </NavLink>
+                            )}
                           </ul>
                         </nav>
                       </div>

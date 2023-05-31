@@ -85,34 +85,38 @@ const Register = () => {
               <form onSubmit={handleRegister}>
                 {/* <!--Sign in section--> */}
                 <div className="flex flex-row items-center justify-center lg:justify-start">
-                  <p className="mb-0 mr-4 text-2xl font-bold">Register With</p>
+                  <div className="mx-auto">
+                    <p className="mb-2 text-2xl font-bold">Register With</p>
 
-                  {/* <!-- Facebook --> */}
-                  <button
-                    type="button"
-                    data-te-ripple-init
-                    data-te-ripple-color="light"
-                    className="mx-1 h-9 w-9 rounded-full flex items-center justify-center bg-accent uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 "
-                  >
-                    {/* <!-- Facebook --> */}
-                    <FaGoogle className="text-xl" />
-                  </button>
+                    {/* <!-- Google --> */}
+                    <div className="flex items-center justify-center">
+                      <button
+                        type="button"
+                        data-te-ripple-init
+                        data-te-ripple-color="light"
+                        className="mx-1 h-12 w-12 rounded-full flex items-center justify-center bg-accent uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#1A1C1B] transition duration-150 ease-in-out hover:bg-primary "
+                      >
+                        {/* <!-- Google --> */}
+                        <FaGoogle className="text-xl" />
+                      </button>
 
-                  {/* <!-- Twitter --> */}
-                  <button
-                    type="button"
-                    data-te-ripple-init
-                    data-te-ripple-color="light"
-                    className="mx-1 h-9 w-9 rounded-full bg-accent flex items-center justify-center uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out]"
-                  >
-                    {/* <!-- Twitter --> */}
+                      {/* <!-- github --> */}
+                      <button
+                        type="button"
+                        data-te-ripple-init
+                        data-te-ripple-color="light"
+                        className="mx-1 h-12 w-12 rounded-full bg-accent flex items-center justify-center uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#1A1C1B] transition duration-150 ease-in-out hover:bg-primary ]"
+                      >
+                        {/* <!-- github --> */}
 
-                    <FaGithubAlt className="text-xl" />
-                  </button>
+                        <FaGithubAlt className="text-xl" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
                 {/* <!-- Separator between social media sign in and email/password sign in --> */}
-                <div className="mb-8 mt-2 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-primary after:mt-0.5 after:flex-1 after:border-t after:border-primary ">
+                <div className="mb-4 mt-2 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-primary after:mt-0.5 after:flex-1 after:border-t after:border-primary ">
                   <p className="mx-4 mb-0 text-center font-semibold dark:text-primary">
                     Or
                   </p>
@@ -120,13 +124,13 @@ const Register = () => {
 
                 {/* Name Input */}
                 <div className="relative mb-8" data-te-input-wrapper-init>
-                  <label className="block text-primary text-sm font-bold mb-2">
+                  <label className="block text-primary text-base font-bold mb-2">
                     Name
                   </label>
                   <input
                     type="text"
                     name="name"
-                    className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
+                    className="w-full border border-accent p-3 outline-none placeholder:text-base placeholder:font-medium font-bold text-xl text-primary"
                     id="name"
                     placeholder="Enter Your Name"
                     required
@@ -135,13 +139,13 @@ const Register = () => {
 
                 {/* <!-- Email input --> */}
                 <div className="relative mb-8" data-te-input-wrapper-init>
-                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                  <label className="block text-gray-700 text-base font-bold mb-2">
                     Email address
                   </label>
                   <input
                     type="text"
                     name="email"
-                    className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
+                    className="w-full border border-accent p-3 outline-none placeholder:text-base placeholder:font-medium font-bold text-xl text-primary"
                     placeholder="Enter email address"
                     required
                   />
@@ -149,13 +153,13 @@ const Register = () => {
 
                 {/* <!-- Password input --> */}
                 <div className="relative mb-8" data-te-input-wrapper-init>
-                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                  <label className="block text-gray-700 text-base font-bold mb-2">
                     Password
                   </label>
                   <input
                     type="password"
                     name="password"
-                    className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
+                    className="w-full border border-accent p-3 outline-none placeholder:text-base placeholder:font-medium font-bold text-xl text-primary"
                     id="password"
                     placeholder="Password"
                     required
@@ -164,13 +168,13 @@ const Register = () => {
 
                 {/* photo URL */}
                 <div className="relative mb-8" data-te-input-wrapper-init>
-                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                  <label className="block text-gray-700 text-base font-bold mb-2">
                     Photo URL
                   </label>
                   <input
                     type="text"
                     name="url"
-                    className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
+                    className="w-full border border-accent p-3 outline-none placeholder:text-base placeholder:font-medium font-bold text-xl text-primary"
                     id="url"
                     placeholder="Photo URL"
                   />

@@ -11,13 +11,13 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../../../../firebase.config";
 
-const auth= getAuth(app);
+const auth = getAuth(app);
 
 const Login = () => {
   const [error, setError] = useState("");
   const emailRef = useRef();
 
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -43,22 +43,39 @@ const Login = () => {
     }
   };
 
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user)
+      })
+      .catch((error) => console.log(error.message));
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error.message));
+  }
+
   const handleResetPassword = (event) => {
     const email = emailRef.current.value;
     if (!email) {
       alert("Please provide your email address to reset password");
-      return
+      return;
     }
-    sendPasswordResetEmail(auth, email).then( ( ) => {
-      alert('Please check your email')
-    }).catch(error => {
-      console.log(error)
-      setError(error.message)
-
-    })
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("Please check your email");
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
   };
-
-
 
   return (
     <div className="">
@@ -76,34 +93,40 @@ const Login = () => {
               <form onSubmit={handleLogin}>
                 {/* <!--Sign in section--> */}
                 <div className="flex flex-row items-center justify-center lg:justify-start">
-                  <p className="mb-0 mr-4 text-2xl font-bold">Sign in with</p>
+                  <div className="mx-auto">
+                    <p className="mb-2 text-2xl font-bold">Register With</p>
 
-                  {/* <!-- Facebook --> */}
-                  <button
-                    type="button"
-                    data-te-ripple-init
-                    data-te-ripple-color="light"
-                    className="mx-1 h-9 w-9 rounded-full flex items-center justify-center bg-accent uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 "
-                  >
-                    {/* <!-- Facebook --> */}
-                    <FaGoogle className="text-xl" />
-                  </button>
+                    {/* <!-- Google --> */}
+                    <div className="flex items-center justify-center">
+                      <button
+                        type="button"
+                        onClick={handleGoogleLogin}
+                        data-te-ripple-init
+                        data-te-ripple-color="light"
+                        className="mx-1 h-12 w-12 rounded-full flex items-center justify-center bg-accent uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#1A1C1B] transition duration-150 ease-in-out hover:bg-primary "
+                      >
+                        {/* <!-- Google --> */}
+                        <FaGoogle className="text-xl" />
+                      </button>
 
-                  {/* <!-- Twitter --> */}
-                  <button
-                    type="button"
-                    data-te-ripple-init
-                    data-te-ripple-color="light"
-                    className="mx-1 h-9 w-9 rounded-full bg-accent flex items-center justify-center uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out]"
-                  >
-                    {/* <!-- Twitter --> */}
+                      {/* <!-- github --> */}
+                      <button
+                        type="button"
+                        onClick={handleGithubLogin}
+                        data-te-ripple-init
+                        data-te-ripple-color="light"
+                        className="mx-1 h-12 w-12 rounded-full bg-accent flex items-center justify-center uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#1A1C1B] transition duration-150 ease-in-out hover:bg-primary ]"
+                      >
+                        {/* <!-- github --> */}
 
-                    <FaGithubAlt className="text-xl" />
-                  </button>
+                        <FaGithubAlt className="text-xl" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
                 {/* <!-- Separator between social media sign in and email/password sign in --> */}
-                <div className="mb-8 mt-2 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-primary after:mt-0.5 after:flex-1 after:border-t after:border-primary ">
+                <div className="mb-4 mt-2 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-primary after:mt-0.5 after:flex-1 after:border-t after:border-primary ">
                   <p className="mx-4 mb-0 text-center font-semibold dark:text-primary">
                     Or
                   </p>
@@ -111,29 +134,31 @@ const Login = () => {
 
                 {/* <!-- Email input --> */}
                 <div className="relative mb-8" data-te-input-wrapper-init>
-                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                  <label className="block text-gray-700 text-base font-bold mb-2">
                     Email address
                   </label>
                   <input
                     type="text"
                     name="email"
                     ref={emailRef}
-                    className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
+                    className="w-full border border-accent p-3 outline-none placeholder:text-base placeholder:font-medium font-bold text-xl text-primary"
                     placeholder="Enter email address"
+                    required
                   />
                 </div>
 
                 {/* <!-- Password input --> */}
                 <div className="relative mb-8" data-te-input-wrapper-init>
-                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                  <label className="block text-gray-700 text-base font-bold mb-2">
                     Password
                   </label>
                   <input
                     type="password"
                     name="password"
-                    className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
+                    className="w-full border border-accent p-3 outline-none placeholder:text-base placeholder:font-medium font-bold text-xl text-primary"
                     id="password"
                     placeholder="Password"
+                    required
                   />
                 </div>
 
@@ -156,7 +181,7 @@ const Login = () => {
                     <small className="font-bold">
                       Forget Passowrd?{" "}
                       <button
-                        className="text-lg underline text-primary"
+                        className="text-base underline text-black"
                         onClick={handleResetPassword}
                       >
                         Reset Password
