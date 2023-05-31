@@ -17,10 +17,13 @@ const Register = () => {
   // const { email, setEmail } = useState("");
   // const { url, setUrl } = useState("");
 
-  const [ error, setError ] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleRegister = (event) => {
     event.preventDefault();
+    setSuccess("");
+    setError("");
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -28,18 +31,20 @@ const Register = () => {
     const url = form.url.value;
 
     if (!/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-      setError('password not valid')
+      setError("Password must contain 8 letter, 1 Capital and 1 Number");
       console.log(error);
       return;
-
     }
-      console.log(name, email, password, url);
+    console.log(name, email, password, url);
 
     if ((name, email, password)) {
       registerUser(email, password)
         .then((result) => {
           const createdUser = result.user;
           console.log(createdUser);
+          setError("");
+          event.target.reset();
+          setSuccess("User has created Successfully");
         })
         .catch((error) => {
           console.log(error.message);
@@ -105,10 +110,10 @@ const Register = () => {
                   <input
                     type="text"
                     name="name"
-                   
                     className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
                     id="exampleFormControlInput2"
                     placeholder="Enter Your Name"
+                    required
                   />
                 </div>
 
@@ -122,6 +127,7 @@ const Register = () => {
                     name="email"
                     className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
                     placeholder="Enter email address"
+                    required
                   />
                 </div>
 
@@ -136,6 +142,7 @@ const Register = () => {
                     className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
                     id="password"
                     placeholder="Password"
+                    required
                   />
                 </div>
 
@@ -166,16 +173,21 @@ const Register = () => {
                     </label>
                   </div>
 
-                  {/* <!--Forgot password link--> */}
-                  <a href="#!">Forgot password?</a>
+                 
                 </div>
 
-                <p className="text-red-500  font-bold text-lg"> {error}</p>
+                {/* error showing */}
+
+                
+                  <p className="text-red-500  font-bold text-lg"> {error}</p>
+               
+                  <p className="text-accent font-bold text-xl">{success}</p>
+               
 
                 {/* <!-- register button --> */}
                 <div className="text-center lg:text-left">
                   <button
-                  type="submit"
+                    type="submit"
                     href="#_"
                     className="relative inline-block text-lg group mt-6"
                   >

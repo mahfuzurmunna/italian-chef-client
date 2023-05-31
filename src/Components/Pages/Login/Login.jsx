@@ -10,34 +10,35 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
 
-  const [error, setError]  = useState('');
-  const {loginUser} = useContext(AuthContext);
+  const { loginUser } = useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
 
     const form = event.target;
-  
+
     const email = form.email.value;
     const password = form.password.value;
- 
 
-    console.log( email, password);
 
-    if ((email, password)) {
-      loginUser(email, password)
-        .then((result) => {
-          const createdUser = result.user;
-          console.log(createdUser);
-        })
-        .catch((error) => {
-          console.log(error.message);
-          setError(error.message);
-        });
-    }
+    console.log(email, password);
+    setError('');
+
+  
+      if ((email, password)) {
+        loginUser(email, password)
+          .then((result) => {
+            const createdUser = result.user;
+            console.log(createdUser);
+          })
+          .catch((error) => {
+            console.log(error.message);
+            setError(error.message);
+          });
+      }
   };
-
 
   return (
     <div className="">
@@ -128,8 +129,6 @@ const Login = () => {
                       Remember me
                     </label>
                   </div>
-
-
 
                   {/* <!--Forgot password link--> */}
                   <a href="#!">Forgot password?</a>
