@@ -35,18 +35,36 @@ const Header = () => {
             >
               <li>Blog</li>
             </NavLink>
-            <NavLink
-              to="/login"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              <li>Log In</li>
-            </NavLink>
+
             <NavLink
               to="register"
               className={({ isActive }) => (isActive ? "active" : "default")}
             >
               <li>Register</li>
             </NavLink>
+            <li className="default">{user?.email}</li>
+
+            {user.email ? (
+              <li>
+                <button
+                  href="#_"
+                  className="relative inline-block text-lg group"
+                >
+                  <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-white transition-colors duration-300 ease-out border-2 border-accent  group-hover:text-white">
+                    <span className="absolute inset-0 w-full h-full px-5 py-3  bg-primary"></span>
+                    <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-accent group-hover:-rotate-180 ease "></span>
+                    <span className="relative text-xl font-bold ">Log Out</span>
+                  </span>
+                </button>
+              </li>
+            ) : (
+              <NavLink
+                to="/login"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                <li>Log In</li>
+              </NavLink>
+            )}
           </ul>
 
           {/* Mobile view */}
