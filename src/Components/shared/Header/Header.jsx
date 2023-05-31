@@ -49,7 +49,8 @@ const Header = () => {
 
             {user ? (
               <>
-                <span className="default">{user.email}</span>
+               
+                <span className="default"> {user.displayName}</span>
                 <li>
                   <button
                     href="#_"

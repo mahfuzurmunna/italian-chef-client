@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import {
   FaFacebook,
   FaFacebookF,
@@ -8,9 +8,14 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import app from "../../../../firebase.config";
+
+const auth= getAuth(app);
 
 const Login = () => {
   const [error, setError] = useState("");
+  const emailRef = useRef();
 
   const { loginUser } = useContext(AuthContext);
 
@@ -22,23 +27,38 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-
     console.log(email, password);
-    setError('');
+    setError("");
 
-  
-      if ((email, password)) {
-        loginUser(email, password)
-          .then((result) => {
-            const createdUser = result.user;
-            console.log(createdUser);
-          })
-          .catch((error) => {
-            console.log(error.message);
-            setError(error.message);
-          });
-      }
+    if ((email, password)) {
+      loginUser(email, password)
+        .then((result) => {
+          const createdUser = result.user;
+          console.log(createdUser);
+        })
+        .catch((error) => {
+          console.log(error.message);
+          setError(error.message);
+        });
+    }
   };
+
+  const handleResetPassword = (event) => {
+    const email = emailRef.current.value;
+    if (!email) {
+      alert("Please provide your email address to reset password");
+      return
+    }
+    sendPasswordResetEmail(auth, email).then( ( ) => {
+      alert('Please check your email')
+    }).catch(error => {
+      console.log(error)
+      setError(error.message)
+
+    })
+  };
+
+
 
   return (
     <div className="">
@@ -97,6 +117,7 @@ const Login = () => {
                   <input
                     type="text"
                     name="email"
+                    ref={emailRef}
                     className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
                     placeholder="Enter email address"
                   />
@@ -131,7 +152,17 @@ const Login = () => {
                   </div>
 
                   {/* <!--Forgot password link--> */}
-                  <a href="#!">Forgot password?</a>
+                  <p>
+                    <small className="font-bold">
+                      Forget Passowrd?{" "}
+                      <button
+                        className="text-lg underline text-primary"
+                        onClick={handleResetPassword}
+                      >
+                        Reset Password
+                      </button>
+                    </small>
+                  </p>
                 </div>
 
                 <p className="text-xl font-medium text-red-600"> {error}</p>

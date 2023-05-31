@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { registerUser } = useContext(AuthContext);
@@ -24,6 +25,8 @@ const Register = () => {
     event.preventDefault();
     setSuccess("");
     setError("");
+
+
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -45,6 +48,7 @@ const Register = () => {
           setError("");
           event.target.reset();
           setSuccess("User has created Successfully");
+          upateUserData(result.user,name, url )
         })
         .catch((error) => {
           console.log(error.message);
@@ -52,6 +56,18 @@ const Register = () => {
         });
     }
   };
+
+    const upateUserData = (user,name, url) => {
+      updateProfile(user, {
+        displayName: name,
+        photoURL: url
+      })
+        .then(() => {
+          console.log("User name Updated");
+        })
+        .catch((error) => console.log(error.message));
+    };
+
 
   return (
     <div className="">
@@ -111,7 +127,7 @@ const Register = () => {
                     type="text"
                     name="name"
                     className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
-                    id="exampleFormControlInput2"
+                    id="name"
                     placeholder="Enter Your Name"
                     required
                   />
@@ -172,17 +188,13 @@ const Register = () => {
                       Remember me
                     </label>
                   </div>
-
-                 
                 </div>
 
                 {/* error showing */}
 
-                
-                  <p className="text-red-500  font-bold text-lg"> {error}</p>
-               
-                  <p className="text-accent font-bold text-xl">{success}</p>
-               
+                <p className="text-red-500  font-bold text-lg"> {error}</p>
+
+                <p className="text-accent font-bold text-xl">{success}</p>
 
                 {/* <!-- register button --> */}
                 <div className="text-center lg:text-left">
