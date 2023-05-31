@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   FaFacebook,
   FaFacebookF,
@@ -7,8 +7,47 @@ import {
   FaGoogle,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const { registerUser } = useContext(AuthContext);
+
+  // const { name, setName } = useState("");
+  // const { password, setPassword } = useState("");
+  // const { email, setEmail } = useState("");
+  // const { url, setUrl } = useState("");
+
+  const [ error, setError ] = useState("");
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const url = form.url.value;
+
+    if (!/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+      setError('password not valid')
+      console.log(error);
+      return;
+
+    }
+      console.log(name, email, password, url);
+
+    if ((name, email, password)) {
+      registerUser(email, password)
+        .then((result) => {
+          const createdUser = result.user;
+          console.log(createdUser);
+        })
+        .catch((error) => {
+          console.log(error.message);
+          setError(error.message);
+        });
+    }
+  };
+
   return (
     <div className="">
       <h2 className="text-3xl md:text-4xl text-center -mt-24  font-bold text-accent">
@@ -22,7 +61,7 @@ const Register = () => {
           <div className="my-container g-6 flex h-full flex-wrap items-center justify-center lg:justify-between  border-solid">
             {/* <!-- Right column container --> */}
             <div className="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12 mx-auto">
-              <form>
+              <form onSubmit={handleRegister}>
                 {/* <!--Sign in section--> */}
                 <div className="flex flex-row items-center justify-center lg:justify-start">
                   <p className="mb-0 mr-4 text-2xl font-bold">Register With</p>
@@ -57,67 +96,61 @@ const Register = () => {
                     Or
                   </p>
                 </div>
+
+                {/* Name Input */}
                 <div className="relative mb-8" data-te-input-wrapper-init>
+                  <label className="block text-primary text-sm font-bold mb-2">
+                    Name
+                  </label>
                   <input
                     type="text"
-                    className="peer block text-xl font-bold min-h-[auto] w-full  border px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none text-primary placeholder:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-accent"
+                    name="name"
+                   
+                    className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
                     id="exampleFormControlInput2"
                     placeholder="Enter Your Name"
                   />
-                  <label
-                    for="exampleFormControlInput2"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.6rem] leading-[2.15] text-neutral-900 transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-accent peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-primary dark:peer-focus:text-primary "
-                  >
-                    Enter Your Name
-                  </label>
                 </div>
 
                 {/* <!-- Email input --> */}
                 <div className="relative mb-8" data-te-input-wrapper-init>
-                  <input
-                    type="text"
-                    className="peer block text-xl font-bold min-h-[auto] w-full  border px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none text-primary placeholder:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-accent"
-                    id="exampleFormControlInput2"
-                    placeholder="Email address"
-                  />
-                  <label
-                    for="exampleFormControlInput2"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.6rem] leading-[2.15] text-neutral-900 transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-accent peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-primary dark:peer-focus:text-primary "
-                  >
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
                     Email address
                   </label>
+                  <input
+                    type="text"
+                    name="email"
+                    className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
+                    placeholder="Enter email address"
+                  />
                 </div>
 
                 {/* <!-- Password input --> */}
                 <div className="relative mb-8" data-te-input-wrapper-init>
-                  <input
-                    type="password"
-                    className="peer block min-h-[auto] w-full  border bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-primary dark:placeholder:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0  border-accent"
-                    id="exampleFormControlInput22"
-                    placeholder="Password"
-                  />
-                  <label
-                    for="exampleFormControlInput22"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-primary transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-primary dark:peer-focus:text-primary "
-                  >
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
                     Password
                   </label>
+                  <input
+                    type="password"
+                    name="password"
+                    className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
+                    id="password"
+                    placeholder="Password"
+                  />
                 </div>
 
                 {/* photo URL */}
                 <div className="relative mb-8" data-te-input-wrapper-init>
-                  <input
-                    type="text"
-                    className="peer block min-h-[auto] w-full  border bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-primary dark:placeholder:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0  border-accent"
-                    id="exampleFormControlInput22"
-                    placeholder="Photo URL"
-                  />
-                  <label
-                    for="exampleFormControlInput22"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-primary transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-primary dark:peer-focus:text-primary "
-                  >
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
                     Photo URL
                   </label>
+                  <input
+                    type="text"
+                    name="url"
+                    className="w-full border border-accent p-3 outline-none placeholder:text-sm placeholder:font-medium font-bold text-xl text-primary"
+                    id="url"
+                    placeholder="Photo URL"
+                  />
                 </div>
                 <div className="mb-6 flex items-center justify-between">
                   {/* <!-- Remember me checkbox --> */}
@@ -128,10 +161,7 @@ const Register = () => {
                       value=""
                       id="exampleCheck2"
                     />
-                    <label
-                      className="inline-block font-semibold pl-[0.15rem] hover:cursor-pointer"
-                      for="exampleCheck2"
-                    >
+                    <label className="inline-block font-semibold pl-[0.15rem] hover:cursor-pointer">
                       Remember me
                     </label>
                   </div>
@@ -140,13 +170,16 @@ const Register = () => {
                   <a href="#!">Forgot password?</a>
                 </div>
 
-                {/* <!-- Login button --> */}
+                <p className="text-red-500  font-bold text-lg"> {error}</p>
+
+                {/* <!-- register button --> */}
                 <div className="text-center lg:text-left">
                   <button
+                  type="submit"
                     href="#_"
                     className="relative inline-block text-lg group mt-6"
                   >
-                    <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-white transition-colors duration-300 ease-out border-2 border-accent  group-hover:text-white">
+                    <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-white transition-colors duration-300 ease-out border-2 border-accent  group-hover:text-white">
                       <span className="absolute inset-0 w-full h-full px-5 py-3  bg-primary"></span>
                       <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-accent group-hover:-rotate-180 ease "></span>
                       <span className="relative text-xl font-bold ">

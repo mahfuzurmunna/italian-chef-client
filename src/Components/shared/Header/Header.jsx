@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo-2.png";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Header = () => {
+
+  const {user} = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log(user?.email);
   // const [cart, setCart] = useContext()
   return (
     // header starts

@@ -1,7 +1,12 @@
-import React from 'react';
-import { FaFacebook, FaFacebookF, FaGithub, FaGithubAlt, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-
+import React from "react";
+import {
+  FaFacebook,
+  FaFacebookF,
+  FaGithub,
+  FaGithubAlt,
+  FaGoogle,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -61,10 +66,7 @@ const Login = () => {
                     id="exampleFormControlInput2"
                     placeholder="Email address"
                   />
-                  <label
-                    for="exampleFormControlInput2"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.6rem] leading-[2.15] text-neutral-900 transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-accent peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-primary dark:peer-focus:text-primary "
-                  >
+                  <label className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.6rem] leading-[2.15] text-neutral-900 transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-accent peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-primary dark:peer-focus:text-primary ">
                     Email address
                   </label>
                 </div>
@@ -77,10 +79,7 @@ const Login = () => {
                     id="exampleFormControlInput22"
                     placeholder="Password"
                   />
-                  <label
-                    for="exampleFormControlInput22"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-primary transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-primary dark:peer-focus:text-primary "
-                  >
+                  <label className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-primary transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-primary dark:peer-focus:text-primary ">
                     Password
                   </label>
                 </div>
@@ -94,10 +93,7 @@ const Login = () => {
                       value=""
                       id="exampleCheck2"
                     />
-                    <label
-                      className="inline-block font-semibold pl-[0.15rem] hover:cursor-pointer"
-                      for="exampleCheck2"
-                    >
+                    <label className="inline-block font-semibold pl-[0.15rem] hover:cursor-pointer">
                       Remember me
                     </label>
                   </div>
@@ -108,24 +104,21 @@ const Login = () => {
 
                 {/* <!-- Login button --> */}
                 <div className="text-center lg:text-left">
-              
                   <button
                     href="#_"
                     className="relative inline-block text-lg group mt-6"
                   >
-                    <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-white transition-colors duration-300 ease-out border-2 border-accent  group-hover:text-white">
+                    <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-white transition-colors duration-300 ease-out border-2 border-accent  group-hover:text-white">
                       <span className="absolute inset-0 w-full h-full px-5 py-3  bg-primary"></span>
                       <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-accent group-hover:-rotate-180 ease "></span>
-                      <span className="relative text-xl font-bold ">
-                       Login
-                      </span>
+                      <span className="relative text-xl font-bold ">Login</span>
                     </span>
                   </button>
 
                   {/* <!-- Register link --> */}
                   <p className="mb-0 mt-2 pt-1 text-md font-semibold">
                     Don't have an account?
-                    <Link to="/register" className='ml-2'>
+                    <Link to="/register" className="ml-2">
                       <a
                         href="#!"
                         className="text-lg font-bold underline hover:text-accent transition hover:font-bold"
