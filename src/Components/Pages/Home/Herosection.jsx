@@ -3,7 +3,7 @@ import bgimage from "../../../assets/hero-img.png";
 
 const Herosection = () => {
   return (
-    <div className="absolute top-[-110px] w-full  mx-auto bg-bg-hero bg-cover h-[740px] bg-no-repeat  flex items-center pl-[330px] hidden">
+    <div className="absolute top-[-110px] w-full  mx-auto bg-bg-hero bg-cover h-[740px] bg-no-repeat  flex items-center pl-[330px] ">
       <div className="">
         <h1 className="font-black text-7xl lg:w-[700px] text-white leading-12">
           Vecchio Evokes the Generosity, Humor & Simiplicity of Italy.
