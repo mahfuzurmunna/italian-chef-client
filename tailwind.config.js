@@ -16,7 +16,10 @@ export default {
       },
       backgroundImage: {
         "bg-nav": "url('/src/assets/bg-nav.png')",
+        "bg-navbar" : "url('/src/assets/bg-navbar.png')",
         "bg-hero": "url('/src/assets/hero-img.png')",
+        "bg-hero2": "url('/src/assets/hero-img2.png')",
+        "bg-food": "url('/src/assets/bg-food.png')"
       },
     },
   },

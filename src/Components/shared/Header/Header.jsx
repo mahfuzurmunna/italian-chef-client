@@ -8,7 +8,7 @@ const Header = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showTipptip, setShowTooltip] = useState(false);
-  console.log(user?.email);
+  // console.log(user?.email);
 
   const handleMouseEnter = () => {
     setShowTooltip(true);

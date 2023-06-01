@@ -3,15 +3,15 @@ import bgimage from "../../../assets/hero-img.png";
 
 const Herosection = () => {
   return (
-    <div className="absolute top-[-110px] w-full  mx-auto bg-bg-hero bg-cover h-[740px] bg-no-repeat  flex items-center pl-[330px] ">
+    <div className="absolute top-[-112px] w-full mx-auto bg-cover   bg-bg-hero h-[730px] bg-no-repeat  flex items-center pl-[330px] ">
       <div className="">
         <h1 className="font-black text-7xl lg:w-[700px] text-white leading-12">
           Vecchio Evokes the Generosity, Humor & Simiplicity of Italy.
         </h1>
         <div className="h-[2px] px-2 w-[80px] mt-4 bg-accent"></div>
         <div className="h-[2px] px-2 w-[50px] mt-1 bg-accent"></div>
-        <p className="text-white font-sacramento mt-5 text-xl">
-          Real test of italy
+        <p className="text-white font-sacramento font-medium mt-5 text-5xl">
+          real test of italy
         </p>
         <div>
           <a href="#_" className="relative inline-block text-lg group mt-6">

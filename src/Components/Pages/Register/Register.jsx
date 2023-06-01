@@ -6,12 +6,13 @@ import {
   FaGithubAlt,
   FaGoogle,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { registerUser } = useContext(AuthContext);
+  let navigate = useNavigate();
 
   // const { name, setName } = useState("");
   // const { password, setPassword } = useState("");
@@ -49,6 +50,7 @@ const Register = () => {
           event.target.reset();
           setSuccess("User has created Successfully");
           upateUserData(result.user,name, url )
+          return navigate('/')
         })
         .catch((error) => {
           console.log(error.message);

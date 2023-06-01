@@ -6,7 +6,7 @@ import {
   FaGithubAlt,
   FaGoogle,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../../../../firebase.config";
@@ -16,6 +16,11 @@ const auth = getAuth(app);
 const Login = () => {
   const [error, setError] = useState("");
   const emailRef = useRef();
+  const location= useLocation();
+  const from = location.state?.from.pathname || '/';
+ 
+  let navigate = useNavigate();
+  
 
   const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
 
@@ -35,6 +40,7 @@ const Login = () => {
         .then((result) => {
           const createdUser = result.user;
           console.log(createdUser);
+          return navigate(from, { replace : true});
         })
         .catch((error) => {
           console.log(error.message);
@@ -79,7 +85,7 @@ const Login = () => {
 
   return (
     <div className="">
-      <h2 className="text-3xl md:text-4xl text-center -mt-24  font-bold text-accent">
+      <h2 className="text-3xl md:text-4xl text-center -mt-24 underline font-bold text-accent">
         {" "}
         This is login page
       </h2>
