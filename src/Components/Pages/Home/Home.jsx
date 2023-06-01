@@ -4,6 +4,7 @@ import "./Home.css";
 import foodimg from "../../../assets/pasta-1.png";
 import pizzaimg from "../../../assets/pizza-1.png";
 import Chefsection from "./Chefsection";
+import Events from "./Events";
 
 const Home = () => {
   return (
@@ -56,6 +57,12 @@ const Home = () => {
 
       {/* chef section */}
       <Chefsection></Chefsection>
+
+      {/* event section */}
+
+      <Events></Events>
+
+
     </div>
   );
 };

@@ -22,7 +22,7 @@ const Chefsection = () => {
         <div className="h-[2px] px-2 w-[80px]  bg-accent"></div>
         <div className="h-[2px] px-2 w-[50px] mt-1  bg-accent"></div>
 
-        <h1 className="text-6xl text-primary font-bold mt-4 w-2/3  ">
+        <h1 className="text-3xl md:text-6xl  text-primary font-bold mt-4 w-2/3  ">
           Introducing our finest and highly acclaimed chefs.
         </h1>
         <p className="text-xl font-semibold text-neutral-500 mt-10 mb-10 leading-7 w-2/3">
@@ -34,7 +34,7 @@ const Chefsection = () => {
       </div>
 
       {/* chef card section */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-10">
+      <div className="grid md:grid-cols-2 md:gap-6 md:max-w-6xl lg:grid-cols-3 gap-y-10">
         {chefData[0]?.chefs?.map((chef) => (
           <div
             key={chef?.id}

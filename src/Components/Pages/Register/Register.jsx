@@ -125,8 +125,8 @@ const Register = () => {
                 </div>
 
                 {/* Name Input */}
-                <div className="relative mb-8" data-te-input-wrapper-init>
-                  <label className="block text-primary text-base font-bold mb-2">
+                <div className="relative mb-4" data-te-input-wrapper-init>
+                  <label className="block text-primary text-base font-bold md:mb-2">
                     Name
                   </label>
                   <input
@@ -140,8 +140,8 @@ const Register = () => {
                 </div>
 
                 {/* <!-- Email input --> */}
-                <div className="relative mb-8" data-te-input-wrapper-init>
-                  <label className="block text-gray-700 text-base font-bold mb-2">
+                <div className="relative mb-4" data-te-input-wrapper-init>
+                  <label className="block text-gray-700 text-base font-bold md:mb-2">
                     Email address
                   </label>
                   <input
@@ -154,8 +154,8 @@ const Register = () => {
                 </div>
 
                 {/* <!-- Password input --> */}
-                <div className="relative mb-8" data-te-input-wrapper-init>
-                  <label className="block text-gray-700 text-base font-bold mb-2">
+                <div className="relative mb-4" data-te-input-wrapper-init>
+                  <label className="block text-gray-700 text-base font-bold md:mb-2">
                     Password
                   </label>
                   <input
@@ -169,8 +169,8 @@ const Register = () => {
                 </div>
 
                 {/* photo URL */}
-                <div className="relative mb-8" data-te-input-wrapper-init>
-                  <label className="block text-gray-700 text-base font-bold mb-2">
+                <div className="relative md:mb-8" data-te-input-wrapper-init>
+                  <label className="block text-gray-700 text-base font-bold md:mb-2">
                     Photo URL
                   </label>
                   <input
@@ -181,9 +181,9 @@ const Register = () => {
                     placeholder="Photo URL"
                   />
                 </div>
-                <div className="mb-6 flex items-center justify-between">
+                <div className=" mb-4 mt-4 md:mb-6 flex items-center justify-between">
                   {/* <!-- Remember me checkbox --> */}
-                  <div className="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
+                  <div className="block min-h-[1.5rem] pl-[1.5rem]">
                     <input
                       className="relative float-left -ml-[1.5rem] mr-[6px] mt-[0.15rem] h-[1.125rem] w-[1.125rem] appearance-none  border-[0.125rem] border-solid border-neutral-300 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:-mt-px checked:after:ml-[0.25rem] checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:-mt-px checked:focus:after:ml-[0.25rem] checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-l-0 checked:focus:after:border-t-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent dark:border-neutral-600 dark:checked:border-primary dark:checked:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
                       type="checkbox"
@@ -207,7 +207,7 @@ const Register = () => {
                   <button
                     type="submit"
                     href="#_"
-                    className="relative inline-block text-lg group mt-6"
+                    className="relative inline-block text-lg group md:mt-6"
                   >
                     <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-white transition-colors duration-300 ease-out border-2 border-accent  group-hover:text-white">
                       <span className="absolute inset-0 w-full h-full px-5 py-3  bg-primary"></span>
@@ -219,7 +219,7 @@ const Register = () => {
                   </button>
 
                   {/* <!-- Register link --> */}
-                  <p className="mb-0 mt-2 pt-1 text-md font-semibold">
+                  <p className="mb-0 md:mt-2 pt-1 text-md font-semibold">
                     Already have an account?
                     <Link to="/login" className="ml-2">
                       <a
