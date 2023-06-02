@@ -6,13 +6,23 @@ import {
   FaGithubAlt,
   FaGoogle,
 } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import Loadingspinner from "../../Loadingspinner/Loadingspinner";
 
 const Register = () => {
   const { registerUser } = useContext(AuthContext);
   let navigate = useNavigate();
+
+  const navigator = useNavigation();
+   
+    // console.log(navigation.state);
+
+    if (navigate.state === "loading") {
+      return <Loadingspinner></Loadingspinner>;
+    }
+
 
   // const { name, setName } = useState("");
   // const { password, setPassword } = useState("");

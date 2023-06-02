@@ -6,7 +6,12 @@ import {
   FaGithubAlt,
   FaGoogle,
 } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../../../../firebase.config";
@@ -16,13 +21,15 @@ const auth = getAuth(app);
 const Login = () => {
   const [error, setError] = useState("");
   const emailRef = useRef();
-  const location= useLocation();
-  const from = location.state?.from.pathname || '/';
+  const location = useLocation();
  
-  let navigate = useNavigate();
-  
+  const from = location.state?.from.pathname || "/";
+  console.log(location);
 
-  const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
+  let navigate = useNavigate();
+
+  const { loginUser, googleLogin, githubLogin, setUser } =
+    useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -40,7 +47,8 @@ const Login = () => {
         .then((result) => {
           const createdUser = result.user;
           console.log(createdUser);
-          return navigate(from, { replace : true});
+          setUser(createdUser);
+          return navigate(from, { replace: true });
         })
         .catch((error) => {
           console.log(error.message);
@@ -53,7 +61,9 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
-        console.log(user)
+        console.log(user);
+        setUser(user);
+         return navigate(from, { replace: true });
       })
       .catch((error) => console.log(error.message));
   };
@@ -63,9 +73,11 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setUser(user);
+         return navigate(from, { replace: true });
       })
       .catch((error) => console.log(error.message));
-  }
+  };
 
   const handleResetPassword = (event) => {
     const email = emailRef.current.value;
@@ -100,7 +112,7 @@ const Login = () => {
                 {/* <!--Sign in section--> */}
                 <div className="flex flex-row items-center justify-center lg:justify-start">
                   <div className="mx-auto">
-                    <p className="mb-2 text-2xl font-bold">Register With</p>
+                    <p className="mb-2 text-2xl font-bold">Login With</p>
 
                     {/* <!-- Google --> */}
                     <div className="flex items-center justify-center">

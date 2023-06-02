@@ -8,6 +8,8 @@ import Register from "../Pages/Register/Register";
 import Errorpage from "../Pages/Error/Errorpage";
 import Chefdetails from "../Pages/ChefDetails/Chefdetails";
 import PrivateRoute from "./PrivateRoute";
+import LoadingSpinner from "../../../../../../react-projects/next-page-book-with-reactrouter/nextPage-complete-main/nextPage-complete-main/src/components/LoadingSpinner";
+import Loadingspinner from "../Loadingspinner/Loadingspinner";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
          </PrivateRoute>
         ),
       },
+      // {
+      //   path: '/loader',
+      //   element : <Loadingspinner></Loadingspinner>
+      // }
     ],
   },
 ]);

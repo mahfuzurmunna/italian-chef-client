@@ -1,24 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { AiFillLike } from "react-icons/ai";
-import { useParams } from "react-router-dom";
+import { useNavigation, useParams } from "react-router-dom";
 import Chefsection from "../Home/Chefsection";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import toast, { Toaster } from "react-hot-toast";
+import Loadingspinner from "../../Loadingspinner/Loadingspinner";
+import LazyLoad from "react-lazy-load";
+
 
 const Chefdetails = () => {
+  //  const navigation = useNavigation();
+  //  console.log(navigation.state);
+
+  //  if (navigation.state === "loading") {
+  //    return <Loadingspinner
+  //    ></Loadingspinner>;
+  //  }
+
+
   const { id } = useParams();
 
   const [chefDetails, setChefDetails] = useState({});
   const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/alldata/${id}`)
+    fetch(`https://italian-chef-server-mahfuzurmunna.vercel.app/alldata/${id}`)
       .then((res) => res.json())
       .then((data) => setChefDetails(data.item));
   }, [id]);
 
-  console.log(chefDetails);
+  // console.log(chefDetails);
 
   const handleTabClick = (index) => {
     setActiveTab(index);
@@ -59,11 +71,20 @@ const Chefdetails = () => {
         <div className="my-container-w-p flex flex-col text-center md:flex-row md:text-left items-center gap-8 justify-center p-8">
           {/* image here */}
           <div>
-            <img
-              src={chefDetails.chef_picture}
-              className="w-[150px] md:w-[200px] "
-              alt=""
-            />
+            <LazyLoad
+              
+              threshold={0.95}
+              onContentVisible={() => {
+                console.log("loaded!");
+              }}
+            >
+              <img
+                src={chefDetails.chef_picture}
+                className="w-[150px] md:w-[200px] "
+                alt=""
+              />
+            </LazyLoad>
+
             {/* like button and likes */}
             <div className="flex relative left-5 lg:left-10 mt-2">
               <span

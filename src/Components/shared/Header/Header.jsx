@@ -75,7 +75,7 @@ const Header = () => {
 
                 <div className="relative">
                   <img
-                    src={user.photoURL || proimg }
+                    src={user.photoURL || proimg}
                     alt="chef-image"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
@@ -83,7 +83,7 @@ const Header = () => {
                   />
 
                   {showTipptip && (
-                    <div className="absolute bg-accent text-white text-base font-bold px-4">
+                    <div className="absolute bg-accent text-white text-base font-bold px-4 z-50">
                       User Name: {user.displayName}
                     </div>
                   )}

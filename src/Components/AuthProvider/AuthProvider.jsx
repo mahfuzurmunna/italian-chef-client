@@ -42,7 +42,7 @@ const githubLogin = () => {
   }
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (LoggedInUser) => {
-      console.log('auth state change', LoggedInUser);
+      
       setUser(LoggedInUser);
     });
 
@@ -57,7 +57,8 @@ const githubLogin = () => {
     loginUser,
     logOutUser,
     googleLogin,
-    githubLogin
+    githubLogin,
+    setUser,
   };
 
   return (

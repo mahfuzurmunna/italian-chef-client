@@ -6,6 +6,7 @@ import pizzaimg from "../../../assets/pizza-1.png";
 import Chefsection from "./Chefsection";
 import Events from "./Events";
 
+
 const Home = () => {
   return (
     <div>

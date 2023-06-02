@@ -1,0 +1,18 @@
+
+<!-- Live server link -->
+
+https://italian-chef-assignment10.web.app/
+
+
+<!-- 5 points about my website -->
+
+
+- The website i have created, It is a italian restaurant called Vecchio where 6 Profesional chefs serves their credential and it contains the chef details and their few special recipe.
+
+- This website is has a home, blog, login and a register page. Where the login system is firebase authenticated.
+
+- This website has 4 meaningful sections in home page including hero section, about the restaurant, chef details, event and header & footer. 
+
+- The website is connected to a local server, few similar data are getting fetched from the local server using Express.js 
+
+-  The website containes two font style, two color theme and structured with a very minimal design, also it is constructed with React router dom. 

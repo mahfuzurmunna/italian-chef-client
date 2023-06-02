@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { AiFillLike } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
+import Loadingspinner from "../../Loadingspinner/Loadingspinner";
 
 const Chefsection = () => {
+  const navigation = useNavigation();
+  // console.log(navigation.state);
+
+  if (navigation.state === "loading") {
+    return <Loadingspinner></Loadingspinner>;
+  }
+
   const [chefData, setChefData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/alldata")
+    fetch("https://italian-chef-server-mahfuzurmunna.vercel.app/alldata")
       .then((res) => res.json())
       .then((data) => setChefData(data));
   }, []);
 
-  console.log(chefData);
+  // console.log(chefData);
 
+  
   return (
     <div className="my-container">
       {/* title and paragraph section */}
@@ -45,6 +54,7 @@ const Chefsection = () => {
                 className="w-full object-cover"
                 src={chef?.chef_picture}
                 alt=""
+                loading="lazy"
               />
 
               <div className="flex items-center justify-center relative my-4   lg:bottom-[60px] lg:left-[90px]">
