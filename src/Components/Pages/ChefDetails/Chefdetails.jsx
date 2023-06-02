@@ -30,7 +30,7 @@ const Chefdetails = () => {
       .then((data) => setChefDetails(data.item));
   }, [id]);
 
-  // console.log(chefDetails);
+  console.log(chefDetails);
 
   const handleTabClick = (index) => {
     setActiveTab(index);
@@ -72,7 +72,6 @@ const Chefdetails = () => {
           {/* image here */}
           <div>
             <LazyLoad
-              
               threshold={0.95}
               onContentVisible={() => {
                 console.log("loaded!");
@@ -109,6 +108,11 @@ const Chefdetails = () => {
             <p className="text-xl mt-4 font-semibold hidden md:block text-neutral-500">
               {chefDetails.description}
             </p>
+           
+              <p className="text-xl lg:mt-4 font-bold text-primary underline">
+                Number of Recipes : {chefDetails?.recipes?.length}
+              </p>
+         
             <p className="text-xl lg:mt-4 font-bold text-primary underline">
               Experience: {chefDetails.years_of_experience}
             </p>
