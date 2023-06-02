@@ -61,11 +61,11 @@ const Chefdetails = () => {
           <div>
             <img
               src={chefDetails.chef_picture}
-              className="w-[100px] md:w-[200px] "
+              className="w-[150px] md:w-[200px] "
               alt=""
             />
             {/* like button and likes */}
-            <div className="flex relative left-10 mt-2">
+            <div className="flex relative left-5 lg:left-10 mt-2">
               <span
                 type="button"
                 data-te-ripple-color="light"
@@ -88,7 +88,7 @@ const Chefdetails = () => {
             <p className="text-xl mt-4 font-semibold hidden md:block text-neutral-500">
               {chefDetails.description}
             </p>
-            <p className="text-xl mt-4 font-bold text-primary underline">
+            <p className="text-xl lg:mt-4 font-bold text-primary underline">
               Experience: {chefDetails.years_of_experience}
             </p>
           </div>

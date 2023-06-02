@@ -25,7 +25,7 @@ const Chefsection = () => {
         <h1 className="text-3xl md:text-6xl  text-primary font-bold mt-4 w-2/3  ">
           Introducing our finest and highly acclaimed chefs.
         </h1>
-        <p className="text-xl font-semibold text-neutral-500 mt-10 mb-10 leading-7 w-2/3">
+        <p className="text-xl font-semibold text-neutral-500 mt-3 lg:mt-10 mb-10 leading-7 w-3/4 lg:w-2/3">
           Our esteemed team comprises renowned chefs who have gained significant
           recognition for their exceptional culinary skills. These highly
           regarded individuals bring unparalleled expertise, creativity, and a
@@ -47,7 +47,7 @@ const Chefsection = () => {
                 alt=""
               />
 
-              <div className="flex items-center justify-center relative bottom-[60px] left-[90px]">
+              <div className="flex items-center justify-center relative my-4   lg:bottom-[60px] lg:left-[90px]">
                 <span
                   type="button"
                   data-te-ripple-color="light"

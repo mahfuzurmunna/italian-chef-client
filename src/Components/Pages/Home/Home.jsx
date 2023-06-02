@@ -10,11 +10,11 @@ const Home = () => {
   return (
     <div>
       {/* hero section */}
-      <div className="home">
+      <div className="home ">
         <Herosection />
       </div>
 
-      <div className="bg-bg-navbar bg-cover bg-no-repeat h-[710px]"></div>
+      <div className="bg-bg-navbar bg-cover bg-no-repeat h-[450px] lg:h-[710px]"></div>
 
       {/* welcome section */}
       <div className="my-container flex flex-col md:flex-row gap-28">
@@ -24,7 +24,7 @@ const Home = () => {
           </p>
           <div className="h-[2px] px-2 w-[80px] mt-4 bg-accent"></div>
           <div className="h-[2px] px-2 w-[50px] mt-1 bg-accent"></div>
-          <h1 className="text-6xl text-primary font-bold mt-4 ">
+          <h1 className="text-4xl md:text-6xl text-primary font-bold mt-4 ">
             We are a modern Italian restaurant in the center of the city.
           </h1>
           <p className="text-xl font-semibold text-neutral-500 mt-5 mb-10 leading-7">
@@ -38,8 +38,8 @@ const Home = () => {
           <img src={foodimg} alt="" />
         </div>
         <div className="w-full  flex justify-between flex-col">
-          <img src={pizzaimg} className="w-full" alt="" />
-          <h2 className="text-primary text-3xl font-bold mt-12    ">
+          <img src={pizzaimg} className="w-full hidden lg:block" alt="" />
+          <h2 className="text-primary text-3xl font-bold   lg:mt-12 ">
             Contacts
           </h2>
           <div>
@@ -61,8 +61,6 @@ const Home = () => {
       {/* event section */}
 
       <Events></Events>
-
-
     </div>
   );
 };
