@@ -10,13 +10,13 @@ import LazyLoad from "react-lazy-load";
 
 
 const Chefdetails = () => {
-  //  const navigation = useNavigation();
-  //  console.log(navigation.state);
+   const navigation = useNavigation();
+   console.log(navigation.state);
 
-  //  if (navigation.state === "loading") {
-  //    return <Loadingspinner
-  //    ></Loadingspinner>;
-  //  }
+   if (navigation.state === "loading") {
+     return <Loadingspinner
+     ></Loadingspinner>;
+   }
 
 
   const { id } = useParams();

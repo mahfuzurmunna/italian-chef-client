@@ -41,10 +41,10 @@ const router = createBrowserRouter([
          </PrivateRoute>
         ),
       },
-      // {
-      //   path: '/loader',
-      //   element : <Loadingspinner></Loadingspinner>
-      // }
+      {
+        path: '/loader',
+        element : <Loadingspinner></Loadingspinner>
+      }
     ],
   },
 ]);
